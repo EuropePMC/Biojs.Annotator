@@ -1,0 +1,39 @@
+<html>
+	<head>
+	
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/Biojs.js"></script>
+		<script type="text/javascript" src="../js/Biojs.Protein3D.js"></script> 
+		<script type="text/javascript" src="../js/Biojs.Protein3DCanvas.js"></script> 
+		<script type="text/javascript" src="../dependencies/jsmol-14.4.4/jsmol/JSmol.min.nojq.js"></script>
+		<script type="text/javascript" src="../dependencies/jsmol-14.4.4/jsmol/js/Jmol2.js"></script>
+		<script type="text/javascript" src="../js/Biojs.AnnotatorBase.js"></script>
+		<script type="text/javascript" src="../js/Biojs.AnnotatorAction.js"></script>
+		<script type="text/javascript" src="../js/AnnotatorSharedData.js"></script>
+		<script type="text/javascript" src="../js/Biojs.Annotator.js"></script>
+		<link type="stylesheet" href="../css/biojs.Protein3D.css" />
+		<link type="stylesheet" href="../css/annotation_highlight.css" />
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css">
+	
+	</head>
+	
+	<body>
+	
+	     <div id="legend_container"></div>
+	     
+	     <div id="fulltext_container">Div containing the fulltext article for the specific pmcid</div>
+	     
+	     <script type="text/javascript">
+	     var annotator = new Biojs.Annotator({
+				target: 'fulltext_container',
+				pmcId: 'PMC5047790',
+				proxyUrl:"../java/annotation_biojs.jsp",
+				idLegend: 'legend_container'
+		    });	
+			
+			annotator.load();
+	     </script>
+	</body>
+
+</html>
