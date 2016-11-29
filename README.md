@@ -1,11 +1,10 @@
 # SciLite Annotation platform
 
-Scilite is an annotation platform developed as part of Europe PMC (www.europepmc.org), a repository for scientific articles in the Life Science domain. Below we describe the core component of SciLite that is responsible for rendering text-mined annotations on the HTML page.  
+Scilite is an annotation platform developed as part of Europe PMC (www.europepmc.org), a repository for scientific articles in the Life Science domain. Below we describe the core component of SciLite that is responsible for rendering text-mined annotations on the HTML page. This component was developed to suit the Europe PMC architecture. Hence this repository contains a skeletal implementation of the SciLite component and users are required to customise it to their own environment (e.g. the back-end infrastructure to store/ retrieve annotations). If you have a specific use case and you need further information kindly contact us. As we progress with developments on EuropePMC environment we shall update with the subsequent versions at later stage.
 
 # Biojs.Annotator
 
 This is the core component that is responsible for highlighting text-mined annotations of different semantic types tagged in a full text article (identified by a PMCID parameter) on the HTML page.
-The component was developed to suit the Europe PMC architecture. Hence, users are required to customise the component to accordingly, e.g. the back-end infrastructure to store/ retrieve annotations.
 The annotations are retrieved through an AJAX call to a back-end page (see the proxyUrl option in the section below) that will retrieve the required annotations for a given PMCID. A typical example of a back-end page is annotation_biojs.jsp inside the folder java.
 The component is expecting this back-end page to return annotations for the specified PMCID in the following JSON format :
  ```javascript
