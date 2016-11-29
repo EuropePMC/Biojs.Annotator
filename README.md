@@ -1,9 +1,13 @@
+# SciLite Annotation platform
+
+Scilite is an annotation platform developed as part of Europe PMC (www.europepmc.org), a repository for scientific articles in the Life Science domain. Below we describe the core component of SciLite that is responsible for rendering text-mined annotations on the HTML page.  
+
 # Biojs.Annotator
 
- This is a basic component to annotate text mining terms connected to different semantic types inside an HTML page containing an article full text identified by a PMCID parameter.
- Different users need to change it in order to tailor it to their requirements.
- The annotations are retrieved through an AJAX call to a back-end page (see the proxyUrl option in the section below) that will retrieve somehow the annotations for the PMCID specified. An example of typical back-end page is annotation_biojs.jsp inside the folder java.
- The components is expecting this back-end page to return the annotations for the PMCID specified in the following JSON format :
+This is the core component that is responsible for highlighting text-mined annotations of different semantic types tagged in a full text article (identified by a PMCID parameter) on the HTML page.
+The component was developed to suit the Europe PMC architecture. Hence, users are required to customise the component to accordingly, e.g. the back-end infrastructure to store/ retrieve annotations.
+The annotations are retrieved through an AJAX call to a back-end page (see the proxyUrl option in the section below) that will retrieve the required annotations for a given PMCID. A typical example of a back-end page is annotation_biojs.jsp inside the folder java.
+The component is expecting this back-end page to return annotations for the specified PMCID in the following JSON format :
  ```javascript
  {"pmcId":"PMC5047790","results":{"distinct":false,"ordered":true,"bindings":[{"annotation"
 :{"value":"http://rdf.ebi.ac.uk/resource/europepmc/annotations/PMC5047790#1-1"},"position":{"value":"1
@@ -36,16 +40,16 @@ You can see the file located at /examples/FulltextPage.html for a simple example
 @param {Object} options An object with the options for the Annotator component.
    
 @option {string} [target='fulltext_container']
-   Identifier of the DIV tag where the article text inside the HTML page is contained. It is a mandatory parameter.
+   Identifier of the DIV tag where the full text of the article is present in the HTML page. It is a mandatory parameter.
   
 @option {string} [pmcId='PMC5047790']
-   PMCID of the full text article that is displayed into the HTML page and that we want to annotate. It is a mandatory parameter.
+   PMCID of the article that is displayed in the HTML page, that we want to annotate. It is a mandatory parameter.
 
 @option {string} [idLegend='legend_container']
-   Identifier of the div that will contain the legend displaying all the semantic types found in the article with the possibility for the user to enable/disable their highlighting. It is a mandatory parameter.
+   Identifier of the DIV tag that will contain the legend to display all the semantic types found in the article with the possibility for the user to enable/disable their highlighting. It is a mandatory parameter.
   
 @option {string} [proxyUrl='../java/annotation_biojs.jsp']
-   Contains the path to the back-end page used to retrieve the annotations for the PMCID specified. It is a mandatory parameter.
+   Contains the path to the back-end page used to retrieve the annotations for a given PMCID. It is a mandatory parameter.
 
 
 ## License 
