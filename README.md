@@ -4,6 +4,8 @@ Scilite is an annotation platform developed as part of Europe PMC (www.europepmc
 
 # Biojs.Annotator
 
+[![DOI](https://zenodo.org/badge/74970144.svg)](https://zenodo.org/badge/latestdoi/74970144)
+
 This is the core component that is responsible for highlighting text-mined annotations of different semantic types tagged in a full text article (identified by a PMCID parameter) on the HTML page.
 The annotations are retrieved through an AJAX call to a back-end page (see the proxyUrl option in the section below) that will retrieve the required annotations for a given PMCID. A typical example of a back-end page is annotation_biojs.jsp inside the folder java.
 The component is expecting this back-end page to return annotations for the specified PMCID in the following JSON format :
