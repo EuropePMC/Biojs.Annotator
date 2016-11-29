@@ -1,7 +1,10 @@
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page session="false"
-    import="uk.bl.ukpmc.web.utilities.email.UkpmcMailUtility, uk.bl.ukpmc.web.constants.SearchConstants, org.europepmc.orcid.utils.SystemUtils, java.util.*, java.text.SimpleDateFormat"
+    import="java.util.*, java.text.SimpleDateFormat"
 %><%
+
+/**
+	This back-end page is an example of page used to send feedback about annotations provided by users. It is accepting the input parameters below. It is necessary to customize the piece of code responsible for sending emails or any other type of notifications at the end of the page
+*/
 
 String message= request.getParameter("feedback_message");
 String judge= request.getParameter("judge");
@@ -58,14 +61,9 @@ String extId= request.getParameter("ext_id");
 	}
 	
 	/**
-		Insert here the code to send a feedback email about the input annotation
+		TODO Insert here the code to send a user feedback email about the input annotation
 	*/
-	//UkpmcMailUtility.sendMessage(SearchConstants.EMAIL_FROM_ADDRESS, SearchConstants.EMAIL_ENGAGEMENT_TO_ADDRESS, subject, "", htmlMessage);
-	
-
-
-
-
+	//MailSender.sendMessage(SearchConstants.EMAIL_FROM_ADDRESS, SearchConstants.EMAIL_ENGAGEMENT_TO_ADDRESS, subject, "", htmlMessage);
 
 %>
 

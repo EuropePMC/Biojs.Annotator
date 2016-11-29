@@ -1,10 +1,21 @@
 <%@page session="false"
     import="java.net.*,java.io.*"
 %><%
+
+/**
+   This page contains a possible example of back-end page used to retrieve the annotations for the PMCID specified. It is accepting a pmcid parameter and it is expected to output the annotations in the following format:
+   {"pmcId":"PMC5047790","results":{"distinct":false,"ordered":true,"bindings":[{"annotation"
+	   :{"value":"http://rdf.ebi.ac.uk/resource/europepmc/annotations/PMC5047790#1-1"},"position":{"value":"1
+	   .1"},"tag":{"value":"http://purl.obolibrary.org/obo/CHEBI_26092"},"prefix":{"value":""},"exact":{"value"
+	   :"Phthalates"},"postfix":{"value":" in Fast Food: A Potential Dietary Sourc"},"pmcid":"PMC5047790"},
+	   {"annotation":{"value":"http://rdf.ebi.ac.uk/resource/europepmc/annotations/PMC5047790#2-2"
+	   },"position":{"value":"2.2"},"tag":{"value":"http://purl.obolibrary.org/obo/CHEBI_22901"},"prefix":{"value"
+	   :"ood Consumption and "},"exact":{"value":"Bisphenol"},"postfix":{"value":" A and Phthalates Ex"},"pmcid"
+	   :"PMC5047790"}]}}
+*/
 try {
 	
 	String pmcid= request.getParameter("pmcid");
-	String type= request.getParameter("type");
 	
 	if (pmcid!=null){
 		pmcid = pmcid.toUpperCase();
@@ -14,16 +25,9 @@ try {
 	}
 	
 	if (pmcid!=null){
-		String reqUrl;
-		    
-	    if (("europepmc").equals(type)){
-	    	//reqUrl contains some API address to retrive annotations for a specific pmcid
-	    	reqUrl= "http://wwwint.ebi.ac.uk/europepmc/rdf/sparql?default-graph-uri=&query=PREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+oa%3A+%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Foa%23%3E%0D%0APREFIX+dcterms%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0D%0A%0D%0ASELECT+%3Fannotation+%3Fposition+%3Ftag+%3Fprefix+%3Fexact+%3Fpostfix+%3Fsource+WHERE+%7B%0D%0A++%0D%0A%3Fannotation+oa%3AhasBody+%3Ftag.%0D%0A%3Fannotation+oa%3AhasTarget+%3Ftarget.%0D%0A%0D%0A%3Ftarget+oa%3AhasSource+%3Chttp%3A%2F%2Feuropepmc.org%2Farticles%2F{pmcid}%3E+.%0D%0A%3Ftarget+oa%3AhasSource+%3Fsource+.%0D%0A%3Ftarget+oa%3AhasSelector+%3Fselector.%0D%0A%0D%0A%3Fselector+oa%3Aexact+%3Fexact.%0D%0A%3Fselector+oa%3Apostfix+%3Fpostfix.%0D%0A%3Fselector+oa%3Aprefix+%3Fprefix.%0D%0A++%0D%0ABIND+%28replace%28strafter%28str%28%3Fannotation%29%2C+%22%23%22%29%2C+%22-%22%2C+%22.%22%29+as+%3Fposition%29%0D%0A%0D%0A%7D+ORDER+BY+%3Fposition%0D%0A&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on";
-	    	
-	    }
-		    
-	    reqUrl = reqUrl.replace("{pmcid}", pmcid);
-	
+    	//@TODO You need to change this value to some API address to retrive annotations for the specific PMCID
+    	String  reqUrl= "http://myServer/getAnnotations/"+pmcid;
+    	
 	    URL url = new URL(reqUrl);
 	    HttpURLConnection con = (HttpURLConnection)url.openConnection();
 	    con.setDoOutput(true);
